@@ -1,17 +1,19 @@
+import { useFeedbackItemsStore } from "../stores/feedbackItemsStore";
 import FeedbackItem from "./FeedbackItem";
-
-const feedbackItem = {
-  upvoteCount: 593,
-  badgeLetter: "B",
-  companyName: "Clark",
-  text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa porro impedit veniam quis itaque adipisci!",
-  daysAgo: "4d",
-};
+import Spinner from "./Spinner";
 
 export default function FeedbackList() {
+  const isLoading = useFeedbackItemsStore((state) => state.isLoading);
+  const filteredFeedbackItems = useFeedbackItemsStore((state) =>
+    state.getFilteredFeedbackItems()
+  );
+
   return (
     <ol className="feedback-list">
-      <FeedbackItem feedbackItem={feedbackItem} />
+      {isLoading ? <Spinner /> : null}
+      {filteredFeedbackItems.map((feedbackItem) => (
+        <FeedbackItem key={feedbackItem.id} feedbackItem={feedbackItem} />
+      ))}
     </ol>
   );
 }

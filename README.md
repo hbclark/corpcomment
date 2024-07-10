@@ -28,3 +28,13 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+# Installation and Development
+
+The entered message must include `#company` and `#company` is the companyName.
+e.g., the entered message is "Hi #test This is a bad company"
+
+1. `npm i`
+2. `npm run dev`
+
+This project is built with Vite, React, and TypeScript.

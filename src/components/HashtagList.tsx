@@ -1,15 +1,21 @@
+import { useFeedbackItemsStore } from "../stores/feedbackItemsStore";
+
 export default function HashtagList() {
+  const companyList = useFeedbackItemsStore((state) => state.getCompanyList());
+  const selectCompany = useFeedbackItemsStore((state) => state.selectCompany);
   return (
     <ul className="hashtags">
-      <li>
-        <button>#Clark</button>
-      </li>
-      <li>
-        <button>#Nike</button>
-      </li>
-      <li>
-        <button>#Macdonald</button>
-      </li>
+      {companyList.map((company) => (
+        <li key={company}>
+          <button
+            onClick={() => {
+              selectCompany(company);
+            }}
+          >
+            #{company}
+          </button>
+        </li>
+      ))}
     </ul>
   );
 }
